@@ -9,6 +9,7 @@ extern bool ruch;
 extern std::string ruchStr;
 extern Szachy s;
 extern Image imgs[12];
+extern int czlowiekPierwszy;
 
 GLuint texIDs[12];
 
@@ -58,7 +59,7 @@ void UI::mouseButtonCallback(GLFWwindow * window, int button, int action, int mo
 				ss << (int)oldY / 64 << (int)oldX / 64 << (int)newY / 64 << (int)newX / 64 << s((int)newY / 64, (int)newX / 64);
 				ruchStr = ss.str();
 			}
-			std::cout << ruchStr << std::endl;
+		//	std::cout << ruchStr << std::endl;
 			std::string mozliwe = s.MozliweRuchy();
 
 			if (mozliwe.empty())
@@ -70,12 +71,13 @@ void UI::mouseButtonCallback(GLFWwindow * window, int button, int action, int mo
 			if (mozliwe.find(ruchStr) != std::string::npos) //Jezeli wykonany ruch jest mozliwy
 			{
 				s.ZrobRuch(ruchStr);
-			//	UI::RysujPlansze();
+				UI::RysujPlansze();
+				glfwSwapBuffers(window);
 
 				s.ObrocPlansze();
 				std::cout << "Mysle nad ruchem" << std::endl;
 				std::string tmp = s.AlfaBeta(4, P_INF, N_INF, 0, "");
-				std::cout << tmp << std::endl;
+//				std::cout << tmp << std::endl;
 				s.ZrobRuch(tmp);
 				s.ObrocPlansze();
 
@@ -102,59 +104,119 @@ void UI::RysujPlansze()
 	{
 		r = i / 8;
 		c = i % 8;
-		switch (s(r, c))
+		if (czlowiekPierwszy == 1)
 		{
-		case 'P':
-			g.DrawImage(imgs[0], c* Szerokosc + Szerokosc / 2, r* Szerokosc + Szerokosc / 2);
-		//	g.DrawRec(c* Szerokosc + Szerokosc / 2, r* Szerokosc + Szerokosc / 2, 32, 32);
-		//	f.Draw(c* Szerokosc + Szerokosc / 2, r* Szerokosc + Szerokosc / 2);
-			break;
-		case 'R':
-			g.DrawImage(imgs[1], c* Szerokosc + Szerokosc / 2, r* Szerokosc + Szerokosc / 2);
-		//	g.DrawRec(c* Szerokosc + Szerokosc / 2, r* Szerokosc + Szerokosc / 2, 32, 32);
+			switch (s(r, c))
+			{
+			case 'P':
+				g.DrawImage(imgs[0], c* Szerokosc + Szerokosc / 2, r* Szerokosc + Szerokosc / 2);
+				//	g.DrawRec(c* Szerokosc + Szerokosc / 2, r* Szerokosc + Szerokosc / 2, 32, 32);
+				//	f.Draw(c* Szerokosc + Szerokosc / 2, r* Szerokosc + Szerokosc / 2);
+				break;
+			case 'R':
+				g.DrawImage(imgs[1], c* Szerokosc + Szerokosc / 2, r* Szerokosc + Szerokosc / 2);
+				//	g.DrawRec(c* Szerokosc + Szerokosc / 2, r* Szerokosc + Szerokosc / 2, 32, 32);
 
-			break;
-		case 'K':
-			//g.DrawRec(c* Szerokosc + Szerokosc / 2, r* Szerokosc + Szerokosc / 2, 32, 32);
+				break;
+			case 'K':
+				//g.DrawRec(c* Szerokosc + Szerokosc / 2, r* Szerokosc + Szerokosc / 2, 32, 32);
 				g.DrawImage(imgs[2], c* Szerokosc + Szerokosc / 2, r* Szerokosc + Szerokosc / 2);
-			break;
-		case 'B':
-			//g.DrawRec(c* Szerokosc + Szerokosc / 2, r* Szerokosc + Szerokosc / 2, 32, 32);
+				break;
+			case 'B':
+				//g.DrawRec(c* Szerokosc + Szerokosc / 2, r* Szerokosc + Szerokosc / 2, 32, 32);
 				g.DrawImage(imgs[3], c* Szerokosc + Szerokosc / 2, r* Szerokosc + Szerokosc / 2);
-			break;
-		case 'Q':
-			//g.DrawRec(c* Szerokosc + Szerokosc / 2, r* Szerokosc + Szerokosc / 2, 32, 32);
+				break;
+			case 'Q':
+				//g.DrawRec(c* Szerokosc + Szerokosc / 2, r* Szerokosc + Szerokosc / 2, 32, 32);
 				g.DrawImage(imgs[4], c* Szerokosc + Szerokosc / 2, r* Szerokosc + Szerokosc / 2);
-			break;
-		case 'A':
-			//g.DrawRec(c* Szerokosc + Szerokosc / 2, r* Szerokosc + Szerokosc / 2, 32, 32);
+				break;
+			case 'A':
+				//g.DrawRec(c* Szerokosc + Szerokosc / 2, r* Szerokosc + Szerokosc / 2, 32, 32);
 				g.DrawImage(imgs[5], c* Szerokosc + Szerokosc / 2, r* Szerokosc + Szerokosc / 2);
-			break;
+				break;
 
-		case 'p':
-			//g.DrawRec(c* Szerokosc + Szerokosc / 2, r* Szerokosc + Szerokosc / 2, 32, 32);
+			case 'p':
+				//g.DrawRec(c* Szerokosc + Szerokosc / 2, r* Szerokosc + Szerokosc / 2, 32, 32);
 				g.DrawImage(imgs[6], c* Szerokosc + Szerokosc / 2, r* Szerokosc + Szerokosc / 2);
-			break;
-		case 'r':
-			//g.DrawRec(c* Szerokosc + Szerokosc / 2, r* Szerokosc + Szerokosc / 2, 32, 32);
+				break;
+			case 'r':
+				//g.DrawRec(c* Szerokosc + Szerokosc / 2, r* Szerokosc + Szerokosc / 2, 32, 32);
 				g.DrawImage(imgs[7], c* Szerokosc + Szerokosc / 2, r* Szerokosc + Szerokosc / 2);
-			break;
-		case 'k':
-			//g.DrawRec(c* Szerokosc + Szerokosc / 2, r* Szerokosc + Szerokosc / 2, 32, 32);
+				break;
+			case 'k':
+				//g.DrawRec(c* Szerokosc + Szerokosc / 2, r* Szerokosc + Szerokosc / 2, 32, 32);
 				g.DrawImage(imgs[8], c* Szerokosc + Szerokosc / 2, r* Szerokosc + Szerokosc / 2);
-			break;
-		case 'b':
-			//g.DrawRec(c* Szerokosc + Szerokosc / 2, r* Szerokosc + Szerokosc / 2, 32, 32);
+				break;
+			case 'b':
+				//g.DrawRec(c* Szerokosc + Szerokosc / 2, r* Szerokosc + Szerokosc / 2, 32, 32);
 				g.DrawImage(imgs[9], c* Szerokosc + Szerokosc / 2, r* Szerokosc + Szerokosc / 2);
-			break;
-		case 'q':
-			//g.DrawRec(c* Szerokosc + Szerokosc / 2, r* Szerokosc + Szerokosc / 2, 32, 32);
+				break;
+			case 'q':
+				//g.DrawRec(c* Szerokosc + Szerokosc / 2, r* Szerokosc + Szerokosc / 2, 32, 32);
 				g.DrawImage(imgs[10], c* Szerokosc + Szerokosc / 2, r* Szerokosc + Szerokosc / 2);
-			break;
-		case 'a':
-			//g.DrawRec(c* Szerokosc + Szerokosc / 2, r* Szerokosc + Szerokosc / 2, 32, 32);
+				break;
+			case 'a':
+				//g.DrawRec(c* Szerokosc + Szerokosc / 2, r* Szerokosc + Szerokosc / 2, 32, 32);
 				g.DrawImage(imgs[11], c* Szerokosc + Szerokosc / 2, r* Szerokosc + Szerokosc / 2);
-			break;
+				break;
+			}
+		}
+		else if (czlowiekPierwszy == 0)
+		{
+			switch (s(r, c))
+			{
+			case 'p':
+				g.DrawImage(imgs[0], c* Szerokosc + Szerokosc / 2, r* Szerokosc + Szerokosc / 2);
+				//	g.DrawRec(c* Szerokosc + Szerokosc / 2, r* Szerokosc + Szerokosc / 2, 32, 32);
+				//	f.Draw(c* Szerokosc + Szerokosc / 2, r* Szerokosc + Szerokosc / 2);
+				break;
+			case 'r':
+				g.DrawImage(imgs[1], c* Szerokosc + Szerokosc / 2, r* Szerokosc + Szerokosc / 2);
+				//	g.DrawRec(c* Szerokosc + Szerokosc / 2, r* Szerokosc + Szerokosc / 2, 32, 32);
+
+				break;
+			case 'k':
+				//g.DrawRec(c* Szerokosc + Szerokosc / 2, r* Szerokosc + Szerokosc / 2, 32, 32);
+				g.DrawImage(imgs[2], c* Szerokosc + Szerokosc / 2, r* Szerokosc + Szerokosc / 2);
+				break;
+			case 'b':
+				//g.DrawRec(c* Szerokosc + Szerokosc / 2, r* Szerokosc + Szerokosc / 2, 32, 32);
+				g.DrawImage(imgs[3], c* Szerokosc + Szerokosc / 2, r* Szerokosc + Szerokosc / 2);
+				break;
+			case 'q':
+				//g.DrawRec(c* Szerokosc + Szerokosc / 2, r* Szerokosc + Szerokosc / 2, 32, 32);
+				g.DrawImage(imgs[4], c* Szerokosc + Szerokosc / 2, r* Szerokosc + Szerokosc / 2);
+				break;
+			case 'a':
+				//g.DrawRec(c* Szerokosc + Szerokosc / 2, r* Szerokosc + Szerokosc / 2, 32, 32);
+				g.DrawImage(imgs[5], c* Szerokosc + Szerokosc / 2, r* Szerokosc + Szerokosc / 2);
+				break;
+
+			case 'P':
+				//g.DrawRec(c* Szerokosc + Szerokosc / 2, r* Szerokosc + Szerokosc / 2, 32, 32);
+				g.DrawImage(imgs[6], c* Szerokosc + Szerokosc / 2, r* Szerokosc + Szerokosc / 2);
+				break;
+			case 'R':
+				//g.DrawRec(c* Szerokosc + Szerokosc / 2, r* Szerokosc + Szerokosc / 2, 32, 32);
+				g.DrawImage(imgs[7], c* Szerokosc + Szerokosc / 2, r* Szerokosc + Szerokosc / 2);
+				break;
+			case 'K':
+				//g.DrawRec(c* Szerokosc + Szerokosc / 2, r* Szerokosc + Szerokosc / 2, 32, 32);
+				g.DrawImage(imgs[8], c* Szerokosc + Szerokosc / 2, r* Szerokosc + Szerokosc / 2);
+				break;
+			case 'B':
+				//g.DrawRec(c* Szerokosc + Szerokosc / 2, r* Szerokosc + Szerokosc / 2, 32, 32);
+				g.DrawImage(imgs[9], c* Szerokosc + Szerokosc / 2, r* Szerokosc + Szerokosc / 2);
+				break;
+			case 'Q':
+				//g.DrawRec(c* Szerokosc + Szerokosc / 2, r* Szerokosc + Szerokosc / 2, 32, 32);
+				g.DrawImage(imgs[10], c* Szerokosc + Szerokosc / 2, r* Szerokosc + Szerokosc / 2);
+				break;
+			case 'A':
+				//g.DrawRec(c* Szerokosc + Szerokosc / 2, r* Szerokosc + Szerokosc / 2, 32, 32);
+				g.DrawImage(imgs[11], c* Szerokosc + Szerokosc / 2, r* Szerokosc + Szerokosc / 2);
+				break;
+			}
 		}
 	}
 }

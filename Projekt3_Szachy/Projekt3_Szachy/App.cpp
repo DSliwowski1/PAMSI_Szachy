@@ -79,27 +79,18 @@ int main(void)
 	glOrtho(0, WND_WIDTH, WND_HEIGHT, 0, -1, 1);
 	glMatrixMode(GL_MODELVIEW); 
 
-//	UI::tmpMain = false;
-
-	//glScalef(1.5f, 1.5f, 1.f);
-	/* Loop until the user closes the window */
-
 	UI::RysujPlansze();
 
 	if (czlowiekPierwszy == 0)
 	{
 		std::cout << "Mysle nad ruchem" << std::endl;
-		start = std::chrono::high_resolution_clock::now();
+	//	start = std::chrono::high_resolution_clock::now();
 		s.ZrobRuch(s.AlfaBeta(4, P_INF, N_INF, 0, ""));
-		end = std::chrono::high_resolution_clock::now();
-		duration = end - start;
-		cout << "Czas: " << duration.count() << endl;
+	//	end = std::chrono::high_resolution_clock::now();
+//duration = end - start;
+//		cout << "Czas: " << duration.count() << endl;
 		s.ObrocPlansze();
 	}
-
-	bool tmpc = true;
-	bool tmpb = true;
-
 
 	while (!glfwWindowShouldClose(window))
 	{

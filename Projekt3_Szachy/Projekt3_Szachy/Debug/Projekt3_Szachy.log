@@ -1,12 +1,2 @@
-﻿  App.cpp
-  Ewaluacja.cpp
-  Szachy.cpp
-c:\users\sliwa\source\pamsi\projekt3_szachy\projekt3_szachy\szachy.cpp(725): warning C4018: "<": niezgodność typu ze znakiem/bez znaku
-c:\users\sliwa\source\pamsi\projekt3_szachy\projekt3_szachy\szachy.cpp(808): warning C4244: "=": konwersja z "wint_t" do "char", możliwa utrata danych
-c:\users\sliwa\source\pamsi\projekt3_szachy\projekt3_szachy\szachy.cpp(811): warning C4244: "=": konwersja z "wint_t" do "char", możliwa utrata danych
-c:\users\sliwa\source\pamsi\projekt3_szachy\projekt3_szachy\szachy.cpp(815): warning C4244: "=": konwersja z "wint_t" do "char", możliwa utrata danych
-c:\users\sliwa\source\pamsi\projekt3_szachy\projekt3_szachy\szachy.cpp(819): warning C4244: "=": konwersja z "wint_t" do "char", możliwa utrata danych
-c:\users\sliwa\source\pamsi\projekt3_szachy\projekt3_szachy\szachy.cpp(850): warning C4018: "<": niezgodność typu ze znakiem/bez znaku
-  UI.cpp
-  Generowanie kodu...
+﻿  UI.cpp
   Projekt3_Szachy.vcxproj -> C:\Users\sliwa\source\PAMSI\Projekt3_Szachy\Debug\Projekt3_Szachy.exe
