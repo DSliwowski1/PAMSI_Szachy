@@ -1,0 +1,75 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Pliki źródłowe">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Pliki nagłówkowe">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="Pliki zasobów">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Pozyczone">
+      <UniqueIdentifier>{9fa2c8c3-281b-486e-a62c-2f7ce66dc42c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Pliki nagłówkowe\GUI">
+      <UniqueIdentifier>{ae9553ce-21df-4c53-a627-1af99f4f182d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Pliki źródłowe\GUI">
+      <UniqueIdentifier>{57dfbb06-af00-41a4-8662-dc5fe59e6c71}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Pliki nagłówkowe\Core">
+      <UniqueIdentifier>{cee69b0f-7f22-470a-8b4a-a7e11f517918}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Pliki źródłowe\Core">
+      <UniqueIdentifier>{81117f43-f736-436c-abee-e9a866f90151}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="App.cpp">
+      <Filter>Pliki źródłowe</Filter>
+    </ClCompile>
+    <ClCompile Include="stb_image.cpp">
+      <Filter>Pozyczone</Filter>
+    </ClCompile>
+    <ClCompile Include="Graphic.cpp">
+      <Filter>Pliki źródłowe\GUI</Filter>
+    </ClCompile>
+    <ClCompile Include="Image.cpp">
+      <Filter>Pliki źródłowe\GUI</Filter>
+    </ClCompile>
+    <ClCompile Include="UI.cpp">
+      <Filter>Pliki źródłowe\GUI</Filter>
+    </ClCompile>
+    <ClCompile Include="Szachy.cpp">
+      <Filter>Pliki źródłowe\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="Ewaluacja.cpp">
+      <Filter>Pliki źródłowe\Core</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="stb_image.h">
+      <Filter>Pozyczone</Filter>
+    </ClInclude>
+    <ClInclude Include="Graphic.h">
+      <Filter>Pliki nagłówkowe\GUI</Filter>
+    </ClInclude>
+    <ClInclude Include="Image.h">
+      <Filter>Pliki nagłówkowe\GUI</Filter>
+    </ClInclude>
+    <ClInclude Include="Point.h">
+      <Filter>Pliki nagłówkowe\GUI</Filter>
+    </ClInclude>
+    <ClInclude Include="UI.h">
+      <Filter>Pliki nagłówkowe\GUI</Filter>
+    </ClInclude>
+    <ClInclude Include="Szachy.h">
+      <Filter>Pliki nagłówkowe\Core</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>
