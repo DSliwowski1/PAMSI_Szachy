@@ -9,6 +9,7 @@
 #pragma warning(disable : 4996)
 
 
+
 using std::string;
 
 void Szachy::Print()
@@ -28,7 +29,8 @@ void Szachy::ZrobRuch(std::string ruch)
 {
 	if (!isdigit(ruch.at(0)))
 	{
-		std::cout << "Szach mat! Wygra³eœ" << std::endl;
+		std::cout << "Szach mat! Wygrales" << std::endl;
+		Koniec();
 		return;
 	}
 
@@ -712,21 +714,20 @@ std::string Szachy::AlfaBeta(int glebokosc, int beta, int alfa, int gracz, std::
 	if (glebokosc == 0 || lista.empty())	//Je¿eli osi¹gneliœmy odpowiedni poziom rekurencji, lub je¿eli nie ma mo¿liwych ruchów(szach)
 	{
 		std::stringstream ss;				//tworzymy strumien
-		ss << this->e.ewaluacja(*this, lista, glebokosc) * (gracz * 2 - 1);		//Ewaluujemy plansze, Jezeli grasz 0 to -1, je¿eli 1  to 1, potrzebne to jest ze wzgêdu na to,	
-		string tmp = ruch;								//¿e ruch zawsze wykunujem z perspektywy bia³ych;
+		ss << this->e.ewaluacja(*this, lista, glebokosc) * (gracz * 2 - 1);		//Ewaluujemy plansze, Jezeli gracz 0 to -1, je¿eli 1  to 1, potrzebne to jest ze wzgêdu na to,	
+		string tmp = ruch;								//¿e ruch zawsze wykunujem z perspektywy figut gracza;
 		tmp += ss.str();
 		return tmp;							//Zachuwjemy format danych i zwracamy
 	}
 	//Posortuj od najbardziej obiecujacyhc ruchów do najmniej
 	lista = SortujRuchy(lista);
 
-	gracz = 1 - gracz;						//Zmien kolejnoœæ
+	gracz = 1 - gracz;					     	//Zmien kolejnoœæ
 
 	for (int i = 0; i < lista.size(); i+=5)		//Dla ka¿dego ruchu w liœcie
 	{
-	this->ZrobRuch(lista.substr(i, 5));		//Wykonujemy ruch
+		this->ZrobRuch(lista.substr(i, 5));		//Wykonujemy ruch
 		this->ObrocPlansze();					//Obracamy plansze, tak aby ruch zawsze wykonywaæ z perspektywy bia³ych (wolniajesze, ale ³atwiejsze w debugowaniu)
-	//	this->Print();
 		string retString = this->AlfaBeta(glebokosc - 1, beta, alfa, gracz, lista.substr(i, 5));	//Rekurencyjnie idziemy w dó³
 		wartosc = atoi(retString.substr(5, string::npos).c_str());
 		this->ObrocPlansze();					//Obroc jeszcze raz
@@ -743,9 +744,9 @@ std::string Szachy::AlfaBeta(int glebokosc, int beta, int alfa, int gracz, std::
 				}
 			}
 		}
-		else
+		else  //Wêze³ maksymalizuj¹cy (gracz bia³y)
 		{
-			if (wartosc > alfa)	//Wêze³ maksymalizuj¹cy (gracz bia³y)
+			if (wartosc > alfa)	
 			{
 				alfa = wartosc;
 				if (glebokosc == MakGlebokosc)
@@ -760,15 +761,15 @@ std::string Szachy::AlfaBeta(int glebokosc, int beta, int alfa, int gracz, std::
 			{
 				std::stringstream ss;				//tworzymy strumien
 				ss << beta;							//Istotny w tym prypadku jest beta
-				string tmp = ruch;					//¿e ruch zawsze wykunujem z perspektywy bia³ych;
+				string tmp = ruch;					
 				tmp += ss.str();
 				return tmp;							//Zachuwjemy format danych i zwracamy
 			}
 			else
 			{
 				std::stringstream ss;				//tworzymy strumien
-				ss << alfa;							//Istotny w tym prypadku jest beta
-				string tmp = ruch;					//¿e ruch zawsze wykunujem z perspektywy bia³ych;
+				ss << alfa;							//Istotny w tym prypadku jest appha
+				string tmp = ruch;					
 				tmp += ss.str();
 				return tmp;							//Zachuwjemy format danych i zwracamy
 			}

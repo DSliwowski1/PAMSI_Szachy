@@ -64,7 +64,8 @@ void UI::mouseButtonCallback(GLFWwindow * window, int button, int action, int mo
 
 			if (mozliwe.empty())
 			{
-				std::cout << "Szach mat! Przegra³eœ!" << std::endl;
+				std::cout << "Szach mat! Przegra³es!" << std::endl;
+				s.Koniec();
 				return;
 			}
 

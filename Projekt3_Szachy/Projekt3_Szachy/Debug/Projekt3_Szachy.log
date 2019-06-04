@@ -1,2 +1,11 @@
-﻿  UI.cpp
+﻿  App.cpp
+c:\users\sliwa\source\pamsi\projekt3_szachy\projekt3_szachy\app.cpp(32): warning C4101: "duration": lokalna zmienna, do której nie istnieje odwołanie
+  Szachy.cpp
+c:\users\sliwa\source\pamsi\projekt3_szachy\projekt3_szachy\szachy.cpp(727): warning C4018: "<": niezgodność typu ze znakiem/bez znaku
+c:\users\sliwa\source\pamsi\projekt3_szachy\projekt3_szachy\szachy.cpp(809): warning C4244: "=": konwersja z "wint_t" do "char", możliwa utrata danych
+c:\users\sliwa\source\pamsi\projekt3_szachy\projekt3_szachy\szachy.cpp(812): warning C4244: "=": konwersja z "wint_t" do "char", możliwa utrata danych
+c:\users\sliwa\source\pamsi\projekt3_szachy\projekt3_szachy\szachy.cpp(816): warning C4244: "=": konwersja z "wint_t" do "char", możliwa utrata danych
+c:\users\sliwa\source\pamsi\projekt3_szachy\projekt3_szachy\szachy.cpp(820): warning C4244: "=": konwersja z "wint_t" do "char", możliwa utrata danych
+c:\users\sliwa\source\pamsi\projekt3_szachy\projekt3_szachy\szachy.cpp(851): warning C4018: "<": niezgodność typu ze znakiem/bez znaku
+  Generowanie kodu...
   Projekt3_Szachy.vcxproj -> C:\Users\sliwa\source\PAMSI\Projekt3_Szachy\Debug\Projekt3_Szachy.exe

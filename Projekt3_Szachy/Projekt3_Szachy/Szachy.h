@@ -46,6 +46,7 @@ private:
 	int PozKrolD = 0, PozKrolM = 0;		//Pozwalaj¹ na u³atwiona sprawdzenie czy król jest szachownay
 	int MakGlebokosc = 4;			//Maksymalna glebokoœæ do której dochodzi rekurencja
 	int Szerokosc=64;
+	bool skonczone = false;
 
 
 private:
@@ -70,6 +71,7 @@ private:
 		int ewaluacjaFigury(Szachy  &s );
 		int ewaluacjaMobinosci(Szachy  &s, int iloscRuchow, int glebokosc);
 		int ewaluacjaPozycji(Szachy  &s, int figura);
+
 
 	private:
 		//Tablice ruchów
@@ -156,17 +158,19 @@ public:
 	}
 	int GetPosKrolD() { return this->PozKrolD; }
 	void SetPosKrolD(int a) { this->PozKrolD = a; }
+	bool CzyKoniec() { return skonczone; }
+	void Koniec() { skonczone = true; }
 
-	//Pamietaj o przeniesienu do privat na koniec
-	std::string MozliweRuchy();
-	void ZrobRuch(std::string ruch);
-	void CofnijRuch(std::string ruch);
+
 	std::string AlfaBeta(int glebokosc, int beta, int alfa, int gracz, std::string ruch);
-	std::string SortujRuchy(std::string lista);
-
+	void ZrobRuch(std::string ruch);
 	void ObrocPlansze();
+	std::string MozliweRuchy();
+	void Pojedynek(GLFWwindow *window);
 
-
+private:
+	void CofnijRuch(std::string ruch);
+	std::string SortujRuchy(std::string lista);
 
 
 };
